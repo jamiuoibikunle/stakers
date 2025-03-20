@@ -38,7 +38,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/5_EAIStakingRanks.sol": "IEAIStaking"
+			"contracts/stakers.sol": "IEAIStaking"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -52,12 +52,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/5_EAIStakingRanks.sol": {
-			"keccak256": "0xe1600fd0ac3e7af6078427a5e3c5efac70edb14c3c377c90ddade043cc7015c6",
+		"contracts/stakers.sol": {
+			"keccak256": "0x0f5e1ecab7ba7146f263a01ac9b38ce00fe70d2b889e08e2340563c018951acf",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://74dcc3b962074f49f05488c08b54bf258bb615a22fcbcc1a6809ea2a35c0f560",
-				"dweb:/ipfs/QmbLaojJBD41poLtedifHXxwKHgjdYMFxUy3EUvKWb1gqN"
+				"bzz-raw://321193d152d100170b58fa10812f5324667830d7c57d09bc3726101310538f86",
+				"dweb:/ipfs/QmdeEStBGVz1EgCtq4dRNHbXEK9CmtXToK8HjcFDX8Xpp9"
 			]
 		}
 	},

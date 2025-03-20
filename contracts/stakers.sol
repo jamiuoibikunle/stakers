@@ -14,7 +14,7 @@ struct WalletBalance {
     uint256 balance;
 }
 
-contract Ranks {
+contract EAIStakingRanks {
     address private eaistaking = 0xDa41c4Ff79C9809c8EE7B5A00Cb28C34049d3404;
     address private tdeai = 0x55eE7ea10fd88DC9fa7Bb1fb541083A6d5bCacd2;
     address public owner;
