@@ -15,15 +15,21 @@ struct WalletBalance {
 }
 
 contract EAIStakingRanks {
-    address private eaistaking = 0xDa41c4Ff79C9809c8EE7B5A00Cb28C34049d3404;
-    address private tdeai = 0x55eE7ea10fd88DC9fa7Bb1fb541083A6d5bCacd2;
+    address private eaistaking;
+    address private tdeai;
     address public owner;
 
-    constructor() {
+    constructor(address _eaistaking, address _tdeai) {
         owner = msg.sender;
+        eaistaking = _eaistaking;
+        _tdeai = tdeai;
     }
 
-    function stakers() public view returns (uint256, WalletBalance[] memory) {
+    function stakers()
+        public
+        view
+        returns (uint256 totalStakers, WalletBalance[] memory wallets)
+    {
         uint16 count = 0;
         uint16 max = 500;
 

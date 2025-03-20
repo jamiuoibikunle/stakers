@@ -6,7 +6,18 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_eaistaking",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_tdeai",
+						"type": "address"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -29,7 +40,7 @@
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "totalStakers",
 						"type": "uint256"
 					},
 					{
@@ -46,7 +57,7 @@
 							}
 						],
 						"internalType": "struct WalletBalance[]",
-						"name": "",
+						"name": "wallets",
 						"type": "tuple[]"
 					}
 				],
@@ -82,11 +93,11 @@
 	},
 	"sources": {
 		"contracts/stakers.sol": {
-			"keccak256": "0x0f5e1ecab7ba7146f263a01ac9b38ce00fe70d2b889e08e2340563c018951acf",
+			"keccak256": "0xb218536b92611e813b81b003e5052b3c754e6550a8c0494fb84dbbaa891f7c13",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://321193d152d100170b58fa10812f5324667830d7c57d09bc3726101310538f86",
-				"dweb:/ipfs/QmdeEStBGVz1EgCtq4dRNHbXEK9CmtXToK8HjcFDX8Xpp9"
+				"bzz-raw://a39af15f4a413e02447dd561b520f7c87f3f68f9c42e9fa6e4f24f20484f1b07",
+				"dweb:/ipfs/QmSm8CLa3VBXmmfCTBWaSGi3C4rTfrmAQbCjMvKtKSw84L"
 			]
 		}
 	},
