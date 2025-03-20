@@ -31,7 +31,7 @@ contract EAIStakingRanks {
         returns (uint256 totalStakers, WalletBalance[] memory wallets)
     {
         uint16 count = 0;
-        uint16 max = 500;
+        uint16 max = 2000;
 
         WalletBalance[] memory addresses = new WalletBalance[](max);
 
