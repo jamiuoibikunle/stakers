@@ -6,23 +6,7 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_eai",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_eaistaking",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_tdeai",
-						"type": "address"
-					}
-				],
+				"inputs": [],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -96,8 +80,11 @@
 		"devdoc": {
 			"kind": "dev",
 			"methods": {
+				"getTier()": {
+					"details": "Checks the EAI and tdEAI holding of a wallet and returns the balance as well as tier wallet falls"
+				},
 				"stakers()": {
-					"details": "Returns a list of stakers and how much each staked."
+					"details": "Get a list of all stakers and checks how much tdEAI each wallet holds"
 				}
 			},
 			"version": 1
@@ -110,7 +97,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/stakers.sol": "EAIStakingRanks"
+			"contracts/stakers.sol": "EAIUtilities"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -125,11 +112,11 @@
 	},
 	"sources": {
 		"contracts/stakers.sol": {
-			"keccak256": "0xdf9d598dc029b2d8bec71e150ade1675c22b51556a42c00c1e1e33054df429fa",
+			"keccak256": "0x20a687a8b7ff61647a3394e1e8fa2d73406991ed4680b6875503a2333aec8adc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e1799de95df4eb6235964b8d0b03c0e82b7ccdf755607103b55a97a18a2e1679",
-				"dweb:/ipfs/QmfAKGD5LfzMCV34dmfovbWWcxrYuQ8GwWJMc3KNU1YDBd"
+				"bzz-raw://f61a8e701961996ff6c11ac7dd431971c586964b312e933c5824fdc0b962bad4",
+				"dweb:/ipfs/QmUQUN6gB3ysVsLkKdNbAMLYc3NhimXqCBkSPcWTycrrkT"
 			]
 		}
 	},

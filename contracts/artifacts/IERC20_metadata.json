@@ -38,7 +38,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/stakers.sol": "ITdEAI"
+			"contracts/stakers.sol": "IERC20"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -53,11 +53,11 @@
 	},
 	"sources": {
 		"contracts/stakers.sol": {
-			"keccak256": "0xea53d46b0758a46c190552bb4454b152ce81206f4b772c0d806ada71af46ef02",
+			"keccak256": "0x20a687a8b7ff61647a3394e1e8fa2d73406991ed4680b6875503a2333aec8adc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9c95e58f411d32fde9722ee50cc104b6b9fd9c3a7553dcfc37e6ae64e4abe6fe",
-				"dweb:/ipfs/QmdgtsCEVQhW4TeC7vs7unxZPRC615uWt72NizFFN9c9gQ"
+				"bzz-raw://f61a8e701961996ff6c11ac7dd431971c586964b312e933c5824fdc0b962bad4",
+				"dweb:/ipfs/QmUQUN6gB3ysVsLkKdNbAMLYc3NhimXqCBkSPcWTycrrkT"
 			]
 		}
 	},

@@ -1,11 +1,12 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
+
+// SPDX-License-Identifier: MIT
 
 interface IEAIStaking {
     function stakers(uint256) external view returns (address);
 }
 
-interface ITdEAI {
+interface IERC20 {
     function balanceOf(address) external view returns (uint256);
 }
 
@@ -14,17 +15,19 @@ struct WalletBalance {
     uint256 balance;
 }
 
-contract EAIStakingRanks {
-    address private eaistaking;
-    address private tdeai;
+contract EAIUtilities {
+    address private eai = 0x6797B6244fA75F2e78cDFfC3a4eb169332b730cc;
+    address private eaistaking = 0x18f8D9193af3bbE7f79100DafC0aa40421f8036E;
+    address private tdeai = 0x4342f4BC5375eCaF56fDf8b5294dE5DbC0fBe889;
     address public owner;
 
-    constructor(address _eaistaking, address _tdeai) {
+    constructor() {
         owner = msg.sender;
-        eaistaking = _eaistaking;
-        _tdeai = tdeai;
     }
 
+    /**
+     * @dev Get a list of all stakers and checks how much tdEAI each wallet holds
+     */
     function stakers()
         public
         view
@@ -37,7 +40,7 @@ contract EAIStakingRanks {
 
         while (count < max) {
             try IEAIStaking(eaistaking).stakers(count) returns (address user) {
-                uint256 balance = ITdEAI(tdeai).balanceOf(user);
+                uint256 balance = IERC20(tdeai).balanceOf(user);
 
                 addresses[count] = WalletBalance(user, balance);
                 count++;
@@ -52,5 +55,33 @@ contract EAIStakingRanks {
         }
 
         return (count, result);
+    }
+
+    /**
+     * @dev Checks the EAI and tdEAI holding of a wallet and returns the balance as well as tier wallet falls
+     */
+    function getTier()
+        public
+        view
+        returns (
+            string memory,
+            uint256,
+            uint256
+        )
+    {
+        uint256 eaiBalance = IERC20(eai).balanceOf(msg.sender);
+        uint256 tdeaiBalance = IERC20(tdeai).balanceOf(msg.sender);
+
+        uint256 total = eaiBalance + tdeaiBalance;
+
+        string memory tier;
+
+        if (total >= 25000 * 10**18) tier = "platinum";
+        else if (total >= 5000 * 10**18) tier = "gold";
+        else if (total >= 2500 * 10**18) tier = "silver";
+        else if (total >= 1250 * 10**18) tier = "bronze";
+        else tier = "none";
+
+        return (tier, eaiBalance, total);
     }
 }
