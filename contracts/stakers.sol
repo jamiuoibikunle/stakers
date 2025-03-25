@@ -60,7 +60,7 @@ contract EAIUtilities {
     /**
      * @dev Checks the EAI and tdEAI holding of a wallet and returns the balance as well as tier wallet falls
      */
-    function getTier()
+    function getTier(address wallet)
         public
         view
         returns (
@@ -69,8 +69,8 @@ contract EAIUtilities {
             uint256
         )
     {
-        uint256 eaiBalance = IERC20(eai).balanceOf(msg.sender);
-        uint256 tdeaiBalance = IERC20(tdeai).balanceOf(msg.sender);
+        uint256 eaiBalance = IERC20(eai).balanceOf(wallet);
+        uint256 tdeaiBalance = IERC20(tdeai).balanceOf(wallet);
 
         uint256 total = eaiBalance + tdeaiBalance;
 
