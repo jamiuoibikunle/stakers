@@ -6,14 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "stakers",
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -38,7 +37,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/stakers.sol": "IEAIStaking"
+			"contracts/stakers.sol": "Ownable"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},

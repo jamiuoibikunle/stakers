@@ -15,20 +15,42 @@ struct WalletBalance {
     uint256 balance;
 }
 
-contract EAIUtilities {
-    address private eai = 0x6797B6244fA75F2e78cDFfC3a4eb169332b730cc;
-    address private eaistaking = 0x18f8D9193af3bbE7f79100DafC0aa40421f8036E;
-    address private tdeai = 0x4342f4BC5375eCaF56fDf8b5294dE5DbC0fBe889;
+contract Ownable {
     address public owner;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Ownable");
+        _;
+    }
 
     constructor() {
         owner = msg.sender;
+    }
+}
+
+contract EAIUtilities is Ownable {
+    address private eai = 0x6797B6244fA75F2e78cDFfC3a4eb169332b730cc;
+    address private staking = 0x18f8D9193af3bbE7f79100DafC0aa40421f8036E;
+    address private tdeai = 0x4342f4BC5375eCaF56fDf8b5294dE5DbC0fBe889;
+    string public name = "EAIUtilities";
+
+    /**
+    @dev Update contract addresses for eai, staking and tdeai. Only the owner is allowed
+    */
+    function updateContractAddresses(
+        address _eai,
+        address _staking,
+        address _tdeai
+    ) public onlyOwner {
+        eai = _eai;
+        tdeai = _tdeai;
+        staking = _staking;
     }
 
     /**
      * @dev Get a list of all stakers and checks how much tdEAI each wallet holds
      */
-    function stakers()
+    function getStakers()
         public
         view
         returns (uint256 totalStakers, WalletBalance[] memory wallets)
@@ -39,7 +61,7 @@ contract EAIUtilities {
         WalletBalance[] memory addresses = new WalletBalance[](max);
 
         while (count < max) {
-            try IEAIStaking(eaistaking).stakers(count) returns (address user) {
+            try IEAIStaking(staking).stakers(count) returns (address user) {
                 uint256 balance = IERC20(tdeai).balanceOf(user);
 
                 addresses[count] = WalletBalance(user, balance);
