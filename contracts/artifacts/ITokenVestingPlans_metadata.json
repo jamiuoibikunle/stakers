@@ -11,9 +11,14 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
-				"name": "balanceOf",
+				"name": "lockedBalances",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -38,7 +43,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/stakers.sol": "IERC20"
+			"contracts/stakers.sol": "ITokenVestingPlans"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},

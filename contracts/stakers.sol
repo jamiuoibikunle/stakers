@@ -6,6 +6,10 @@ interface IEAIStaking {
     function stakers(uint256) external view returns (address);
 }
 
+interface ITokenVestingPlans {
+    function lockedBalances(address, address) external view returns (uint256);
+}
+
 interface IERC20 {
     function balanceOf(address) external view returns (uint256);
 }
@@ -32,10 +36,11 @@ contract EAIUtilities is Ownable {
     address private eai = 0x6797B6244fA75F2e78cDFfC3a4eb169332b730cc;
     address private staking = 0x18f8D9193af3bbE7f79100DafC0aa40421f8036E;
     address private tdeai = 0x4342f4BC5375eCaF56fDf8b5294dE5DbC0fBe889;
+    address private hedgey = 0x2CDE9919e81b20B4B33DD562a48a84b54C48F00C;
     string public name = "EAIUtilities";
 
     /**
-    @dev Update contract addresses for eai, staking and tdeai. Only the owner is allowed
+    @dev this function updates contract addresses for eai, staking and tdeai. Only the owner is allowed and all addresses have to be provided
     */
     function updateContractAddresses(
         address _eai,
@@ -48,7 +53,7 @@ contract EAIUtilities is Ownable {
     }
 
     /**
-     * @dev Get a list of all stakers and checks how much tdEAI each wallet holds
+     * @dev Get a list of all stakers and checks how much tdEAI each wallet holds. Returns an unsorted list
      */
     function getStakers()
         public
@@ -88,13 +93,16 @@ contract EAIUtilities is Ownable {
         returns (
             string memory,
             uint256,
+            uint256,
+            uint256,
             uint256
         )
     {
-        uint256 eaiBalance = IERC20(eai).balanceOf(wallet);
-        uint256 tdeaiBalance = IERC20(tdeai).balanceOf(wallet);
+        uint256 unstaked = IERC20(eai).balanceOf(wallet);
+        uint256 staked = IERC20(tdeai).balanceOf(wallet);
+        uint256 vested = ITokenVestingPlans(hedgey).lockedBalances(wallet, eai);
 
-        uint256 total = eaiBalance + tdeaiBalance;
+        uint256 total = unstaked + staked + vested;
 
         string memory tier;
 
@@ -104,6 +112,6 @@ contract EAIUtilities is Ownable {
         else if (total >= 1250 * 10**18) tier = "bronze";
         else tier = "none";
 
-        return (tier, eaiBalance, total);
+        return (tier, unstaked, staked, vested, total);
     }
 }
