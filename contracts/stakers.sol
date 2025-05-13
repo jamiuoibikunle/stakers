@@ -91,11 +91,11 @@ contract EAIUtilities is Ownable {
         public
         view
         returns (
-            string memory,
-            uint256,
-            uint256,
-            uint256,
-            uint256
+            string memory tier,
+            uint256 unstaked_balance,
+            uint256 staked_balance,
+            uint256 vested_balance,
+            uint256 total_balance
         )
     {
         uint256 unstaked = IERC20(eai).balanceOf(wallet);
@@ -104,14 +104,14 @@ contract EAIUtilities is Ownable {
 
         uint256 total = unstaked + staked + vested;
 
-        string memory tier;
+        string memory holding;
 
-        if (total >= 25000 * 10**18) tier = "platinum";
-        else if (total >= 5000 * 10**18) tier = "gold";
-        else if (total >= 2500 * 10**18) tier = "silver";
-        else if (total >= 1250 * 10**18) tier = "bronze";
-        else tier = "none";
+        if (total >= 25000 * 10**18) holding = "platinum";
+        else if (total >= 5000 * 10**18) holding = "gold";
+        else if (total >= 2500 * 10**18) holding = "silver";
+        else if (total >= 1250 * 10**18) holding = "bronze";
+        else holding = "none";
 
-        return (tier, unstaked, staked, vested, total);
+        return (holding, unstaked, staked, vested, total);
     }
 }

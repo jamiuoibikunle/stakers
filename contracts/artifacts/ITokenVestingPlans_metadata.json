@@ -58,11 +58,11 @@
 	},
 	"sources": {
 		"contracts/stakers.sol": {
-			"keccak256": "0xd831c3ad126672431de99164d6e8db3dd31db07dcbb649631c0c215b61dbebd9",
+			"keccak256": "0x9794ccd70259d0a342179189bab73073152937f2f17d64fa16db5d7b9dc2330c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2e996d58fcb37c4c671f9cfca8fe2dcbee361712c61e07551edcd72e218f90b1",
-				"dweb:/ipfs/QmQ33K6NsXgnP43Ay6KfgaPFPxwHURU16RDpZyee98QGmC"
+				"bzz-raw://1c4083cb85ced6f21f2eaad5d002da5e4c23c7c4c4d59634c11b60d965c34b94",
+				"dweb:/ipfs/QmWjAdEyuzyMRKu9vbCZRViTXcR2nLQ3UGnCsP6wLZHcEL"
 			]
 		}
 	},
